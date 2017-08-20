@@ -7,11 +7,6 @@ import javax.swing.*;
 
 public class Window extends JFrame{
 	private static final long serialVersionUID = 1L;
-
-	// main
-	public static void main(String args[]) {
-		new Window();
-	}
 	
 	// constructor
 	public Window() {
@@ -35,7 +30,7 @@ public class Window extends JFrame{
 		this.setTitle("CarManager");
 		this.setVisible(true);
 		
-		new AddNewCarWindow();
+		//new AddNewCarWindow();
 	}
 	
 }

@@ -3,6 +3,8 @@ package View;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class AddNewCarWindow extends JFrame{
@@ -54,6 +56,31 @@ public class AddNewCarWindow extends JFrame{
 		this.setResizable(false);
 		this.setTitle("Add new car");
 		this.setVisible(true);
+	}
+	
+	// methods
+	public String getName() {
+		return name.getText();
+	}
+	
+	public int getTopSpeed() {
+		return Integer.parseInt(topSpeed.getText());
+	}
+	
+	public int getYear() {
+		return Integer.parseInt(year.getText());
+	}
+	
+	public double getFuelConsumption() {
+		return Double.parseDouble(fuelConsumption.getText());
+	}
+	
+	public void addOkButtonListener(ActionListener listenerForOkButton) {
+		okButton.addActionListener(listenerForOkButton);
+	}
+	
+	public void displayErrorMessage(String ErrorMessage) {
+		//JOptionPane.showMessageDialog(this, errorMessage);
 	}
 	
 }
