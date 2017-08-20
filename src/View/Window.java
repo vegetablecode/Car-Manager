@@ -35,7 +35,7 @@ public class Window extends JFrame{
 		this.setTitle("CarManager");
 		this.setVisible(true);
 		
-		//new AddNewCarWindow();
+		new AddNewCarWindow();
 	}
 	
 }
