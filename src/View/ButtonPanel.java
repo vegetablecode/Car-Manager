@@ -8,21 +8,24 @@ public class ButtonPanel extends JPanel{
 	
 	// attributes
 	private JLabel title;
-	private JButton button1;
-	private JButton button2;
+	private JButton addNewCar;
+	private JButton deleteCar;
+	private JButton editCar;
 	
 	// constructor
 	public ButtonPanel() {
 		title = new JLabel("Button menu");
-		button1 = new JButton("one");
-		button2 = new JButton("two");
+		addNewCar = new JButton("Add new car");
+		deleteCar = new JButton("Delete car");
+		editCar = new JButton("Edit car");
 		
-		setPreferredSize(new Dimension(600, 400));
-		setLayout(new GridLayout(3,1));
+		setPreferredSize(new Dimension(700, 400));
+		setLayout(new GridLayout(4,1));
 		
 		this.add(title);
-		this.add(button1);
-		this.add(button2);
+		this.add(addNewCar);
+		this.add(deleteCar);
+		this.add(editCar);
 	}
 
 }

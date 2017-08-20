@@ -34,6 +34,8 @@ public class Window extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("CarManager");
 		this.setVisible(true);
+		
+		//new AddNewCarWindow();
 	}
 	
 }
