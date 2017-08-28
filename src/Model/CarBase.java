@@ -6,22 +6,22 @@ import java.util.List;
 public class CarBase {
 
 	// attributes
-	private static List <Car> cars = new ArrayList <Car>();
+	private List <Car> cars = new ArrayList <Car>();
 	
 	// methods
-	public static void addNewCar(String name, int topSpeed, int year, double fuelConsumption) {
+	public void addNewCar(String name, int topSpeed, int year, double fuelConsumption) {
 		cars.add(new Car(name, topSpeed, year, fuelConsumption));
 	}
 	
-	public static int getNumbOfCars() {
+	public int getNumbOfCars() {
 		return cars.size();
 	}
 	
-	public static void removeCar(int id) {
+	public void removeCar(int id) {
 		cars.remove(id);
 	}
 	
-	public static Car getCar(int id) {
+	public Car getCar(int id) {
 		return cars.get(id);
 	}
 }

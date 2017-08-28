@@ -79,6 +79,10 @@ public class AddNewCarWindow extends JFrame{
 		okButton.addActionListener(listenerForOkButton);
 	}
 	
+	public void addCancelButtonListener(ActionListener listenerForCancelButton) {
+		cancelButton.addActionListener(listenerForCancelButton);
+	}
+	
 	public void displayErrorMessage(String ErrorMessage) {
 		//JOptionPane.showMessageDialog(this, errorMessage);
 	}

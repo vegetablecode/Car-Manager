@@ -1,6 +1,8 @@
 package View;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class ButtonPanel extends JPanel{
@@ -28,4 +30,17 @@ public class ButtonPanel extends JPanel{
 		this.add(editCar);
 	}
 
+	// methods
+	public void addANCListener(ActionListener listenerForANCButton) {
+		addNewCar.addActionListener(listenerForANCButton);
+	}
+	
+	public void addDCListener(ActionListener listenerForDCButton) {
+		deleteCar.addActionListener(listenerForDCButton);
+	}
+	
+	public void addECListener(ActionListener listenerForECBButton) {
+		editCar.addActionListener(listenerForECBButton);
+	}
+	
 }
