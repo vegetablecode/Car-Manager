@@ -1,9 +1,7 @@
 package App;
 
-import Controller.AddNewCarWindowController;
 import Controller.WindowController;
 import Model.CarBase;
-import View.AddNewCarWindow;
 import View.Window;
 
 public class Main {
@@ -12,6 +10,7 @@ public class Main {
 		CarBase theModel = new CarBase();
 		Window theView = new Window();
 		WindowController theController = new WindowController(theModel, theView);
+		
 		
 		//AddNewCarWindow ancWindow = new AddNewCarWindow();
 		//AddNewCarWindowController ancController = new AddNewCarWindowController(ancWindow);
