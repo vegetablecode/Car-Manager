@@ -13,7 +13,7 @@ public class Main {
 		
 		
 		//AddNewCarWindow ancWindow = new AddNewCarWindow();
-		//AddNewCarWindowController ancController = new AddNewCarWindowController(ancWindow);
+		//AddNewCarWindowController ancController = new AddNewCarWindowController(ancWindow, theModel);
 	}
 	
 }

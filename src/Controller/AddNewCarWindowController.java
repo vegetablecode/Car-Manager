@@ -14,18 +14,23 @@ public class AddNewCarWindowController {
 	
 	// constructor
 	public AddNewCarWindowController(AddNewCarWindow theView, CarBase theModel) {
-		this.theView = theView;
 		this.theModel = theModel;
 		
-		this.theView.addOkButtonListener(new okButtonListener());
-		this.theView.addCancelButtonListener(new cancelButtonListener());
+		theView.addOkButtonListener(new okButtonListener());
+		theView.addCancelButtonListener(new cancelButtonListener());
+		
 	}
 	
 	// OK BUTTON CLASS
 	class okButtonListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.print("OK! Button Clicked");
+			//System.out.print("OK! Button Clicked");
+			System.out.println(theView.getName());
+			//System.out.println(theView.getTopSpeed());
+			//System.out.println(theView.getYear());
+			//System.out.println(theView.getFuelConsumption());
+			//theModel.addNewCar(theView.getName(), theView.getTopSpeed(), theView.getYear(), theView.getFuelConsumption());
 		}
 		
 	}

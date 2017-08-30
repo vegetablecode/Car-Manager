@@ -1,10 +1,11 @@
 package Controller;
 
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Model.CarBase;
+import View.AddNewCarWindow;
+import View.Window;
 
 public class WindowController {
 	
@@ -12,25 +13,31 @@ public class WindowController {
 	private CarBase theModel;
 	private Window theView;
 	
+	// anc
+	private AddNewCarWindow ancWindow;
+	private AddNewCarWindowController ancController;
+	
 	// constructor
 	public WindowController(CarBase theModel, Window theView) {
 		this.theModel = theModel;
 		this.theView = theView;
 		
-		//theView.kek();
-		
-		//theView.addANCListener(new ANCButtonListener());
-		//theView.addDCListener(new DCButtonListener());
-		//theView.addECListener(new ECButtonListener());
+		theView.addANCListener(new ANCButtonListener());
+		theView.addDCListener(new DCButtonListener());
+		theView.addECListener(new ECButtonListener());
 		
 		theView.setVisible(true);
+		
+		// anc
+		ancWindow = new AddNewCarWindow();
+		ancController = new AddNewCarWindowController(ancWindow, theModel);
 	}
-
+	
 	// ANC CLASS
 	class ANCButtonListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("ANC Button Clicked");
+			ancWindow.setVisible(true);
 			
 		}
 		

@@ -83,8 +83,4 @@ public class Window extends JFrame{
 		editCar.addActionListener(listenerForECBButton);
 	}
 	
-	public void kek() {
-		System.out.println("SIEMSON");
-	}
-	
 }
