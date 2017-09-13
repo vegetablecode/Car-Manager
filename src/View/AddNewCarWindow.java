@@ -86,5 +86,12 @@ public class AddNewCarWindow extends JFrame{
 	public void displayErrorMessage(String errorMessage) {
 		JOptionPane.showMessageDialog(this, errorMessage);
 	}
+
+	public void cleanFields() {
+		name.setText("");
+		topSpeed.setText("");
+		year.setText("");
+		fuelConsumption.setText("");
+	}
 	
 }

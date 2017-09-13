@@ -43,7 +43,7 @@ public class Window extends JFrame{
 		
 		// set components: mainPanel
 		mainPanel.setPreferredSize(new Dimension(400, 400));
-		mainPanel.setLayout(new GridLayout(1,1));
+		mainPanel.setLayout(new GridLayout(1,2));
 		
 		listOfCars = new JTextArea(15,20);
 		

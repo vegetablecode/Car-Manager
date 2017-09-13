@@ -30,7 +30,7 @@ public class WindowController {
 		
 		// anc
 		ancWindow = new AddNewCarWindow();
-		ancController = new AddNewCarWindowController(ancWindow, theModel);
+		ancController = new AddNewCarWindowController(theView, ancWindow, theModel);
 	}
 	
 	// ANC CLASS
@@ -47,9 +47,7 @@ public class WindowController {
 
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("DC Button Clicked");
-			System.out.println(theModel.getNumbOfCars());
-			if(theModel.getNumbOfCars()>0)
-				theView.updateMainPanel(theModel);
+			
 		}
 		
 	}

@@ -5,15 +5,18 @@ import java.awt.event.ActionListener;
 
 import Model.CarBase;
 import View.AddNewCarWindow;
+import View.Window;
 
 public class AddNewCarWindowController {
 
 	// attributes
+	private Window theWindow;
 	private AddNewCarWindow theView;
 	private CarBase theModel;
 	
 	// constructor
-	public AddNewCarWindowController(AddNewCarWindow theView, CarBase theModel) {
+	public AddNewCarWindowController(Window theWindow, AddNewCarWindow theView, CarBase theModel) {
+		this.theWindow = theWindow;
 		this.theModel = theModel;
 		this.theView = theView;
 		
@@ -38,6 +41,10 @@ public class AddNewCarWindowController {
 				fuelConsumption = theView.getFuelConsumption();
 				
 				theModel.addNewCar(name, topSpeed, year, fuelConsumption);
+				theWindow.updateMainPanel(theModel);
+				theView.setVisible(false);
+				
+				theView.cleanFields();
 			}
 			catch(NumberFormatException ex) {
 				System.out.println(ex);
@@ -52,6 +59,7 @@ public class AddNewCarWindowController {
 		
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Cancel button clicked!");
+			theWindow.updateMainPanel(theModel);
 		}
 		
 	}
