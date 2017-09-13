@@ -17,7 +17,7 @@ public class Window extends JFrame{
 	private JPanel buttonPanel;
 	
 	// attributes: panels: mainPanel
-	private JLabel testLabel;
+	private JTextArea listOfCars;
 	
 	// attributes: panels: buttonPanel
 	private JLabel title;
@@ -43,11 +43,15 @@ public class Window extends JFrame{
 		
 		// set components: mainPanel
 		mainPanel.setPreferredSize(new Dimension(400, 400));
-		mainPanel.setLayout(new GridLayout(3,1));
+		mainPanel.setLayout(new GridLayout(1,1));
 		
-		testLabel = new JLabel("Main Panel goes here");
+		listOfCars = new JTextArea(15,20);
 		
-		mainPanel.add(testLabel);
+		listOfCars.setText("List of Cars:\n");
+		listOfCars.setLineWrap(true);
+		listOfCars.setWrapStyleWord(true);
+		
+		mainPanel.add(listOfCars);
 		
 		// set components: buttonPanel
 		buttonPanel.setPreferredSize(new Dimension(700, 400));
@@ -87,7 +91,7 @@ public class Window extends JFrame{
 	
 	public void updateMainPanel(CarBase cars) {
 		for(int i=0; i<cars.getNumbOfCars(); i++) {
-			testLabel.setText(cars.getCar(i).getName() + "  " + cars.getCar(i).getTopSpeed());
+			listOfCars.append(cars.getCar(i).getName() + "  " + cars.getCar(i).getTopSpeed() + "\n");
 		}
 	}
 	
