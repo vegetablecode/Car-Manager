@@ -60,22 +60,18 @@ public class AddNewCarWindow extends JFrame{
 	
 	// methods
 	public String getName() {
-		System.out.println(name.getText());
 		return name.getText();
 	}
 	
 	public int getTopSpeed() {
-		System.out.println(Integer.parseInt(topSpeed.getText()));
 		return Integer.parseInt(topSpeed.getText());
 	}
 	
 	public int getYear() {
-		System.out.println(Integer.parseInt(year.getText()));
 		return Integer.parseInt(year.getText());
 	}
 	
 	public double getFuelConsumption() {
-		System.out.println(Double.parseDouble(fuelConsumption.getText()));
 		return Double.parseDouble(fuelConsumption.getText());
 	}
 	
@@ -87,8 +83,8 @@ public class AddNewCarWindow extends JFrame{
 		cancelButton.addActionListener(listenerForCancelButton);
 	}
 	
-	public void displayErrorMessage(String ErrorMessage) {
-		//JOptionPane.showMessageDialog(this, errorMessage);
+	public void displayErrorMessage(String errorMessage) {
+		JOptionPane.showMessageDialog(this, errorMessage);
 	}
 	
 }

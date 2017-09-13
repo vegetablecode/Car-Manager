@@ -38,7 +38,6 @@ public class WindowController {
 
 		public void actionPerformed(ActionEvent arg0) {
 			ancWindow.setVisible(true);
-			
 		}
 		
 	}
@@ -48,7 +47,9 @@ public class WindowController {
 
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("DC Button Clicked");
-			
+			System.out.println(theModel.getNumbOfCars());
+			if(theModel.getNumbOfCars()>0)
+				theView.updateMainPanel(theModel);
 		}
 		
 	}

@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Model.CarBase;
+
 public class Window extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
@@ -81,6 +83,12 @@ public class Window extends JFrame{
 	
 	public void addECListener(ActionListener listenerForECBButton) {
 		editCar.addActionListener(listenerForECBButton);
+	}
+	
+	public void updateMainPanel(CarBase cars) {
+		for(int i=0; i<cars.getNumbOfCars(); i++) {
+			testLabel.setText(cars.getCar(i).getName() + "  " + cars.getCar(i).getTopSpeed());
+		}
 	}
 	
 }

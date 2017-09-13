@@ -15,6 +15,7 @@ public class AddNewCarWindowController {
 	// constructor
 	public AddNewCarWindowController(AddNewCarWindow theView, CarBase theModel) {
 		this.theModel = theModel;
+		this.theView = theView;
 		
 		theView.addOkButtonListener(new okButtonListener());
 		theView.addCancelButtonListener(new cancelButtonListener());
@@ -25,12 +26,23 @@ public class AddNewCarWindowController {
 	class okButtonListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent arg0) {
-			//System.out.print("OK! Button Clicked");
-			System.out.println(theView.getName());
-			//System.out.println(theView.getTopSpeed());
-			//System.out.println(theView.getYear());
-			//System.out.println(theView.getFuelConsumption());
-			//theModel.addNewCar(theView.getName(), theView.getTopSpeed(), theView.getYear(), theView.getFuelConsumption());
+			String name;
+			int topSpeed;
+			int year;
+			double fuelConsumption;
+			
+			try {
+				name = theView.getName();
+				topSpeed = theView.getTopSpeed();
+				year = theView.getYear();
+				fuelConsumption = theView.getFuelConsumption();
+				
+				theModel.addNewCar(name, topSpeed, year, fuelConsumption);
+			}
+			catch(NumberFormatException ex) {
+				System.out.println(ex);
+				theView.displayErrorMessage("You need to enter all details!");
+			}
 		}
 		
 	}
