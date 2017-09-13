@@ -1,11 +1,15 @@
 package View;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 
 import Model.CarBase;
 
@@ -17,10 +21,33 @@ public class Window extends JFrame{
 	private JPanel buttonPanel;
 	
 	// attributes: panels: mainPanel
+	private Border mainBorder;
 	private JTextArea listOfCars;
+	private DefaultTableModel model;
+	private JTable carList;
+	private JScrollPane scrollPane;
+	//private String[] columnNames = {"Name", "Top Speed", "Year of Production", "Fuel Consumption"}; 
+	
+	String[] columnNames = {"First Name",
+            "Last Name",
+            "Sport",
+            "# of Years",
+            "Vegetarian"};
+	Object[][] data = {
+		    {"Kathy", "Smith",
+		     "Snowboarding", new Integer(5), new Boolean(false)},
+		    {"John", "Doe",
+		     "Rowing", new Integer(3), new Boolean(true)},
+		    {"Sue", "Black",
+		     "Knitting", new Integer(2), new Boolean(false)},
+		    {"Jane", "White",
+		     "Speed reading", new Integer(20), new Boolean(true)},
+		    {"Joe", "Brown",
+		     "Pool", new Integer(10), new Boolean(false)}
+		};
 	
 	// attributes: panels: buttonPanel
-	private JLabel title;
+	private Border buttonBorder;
 	private JButton addNewCar;
 	private JButton deleteCar;
 	private JButton editCar;
@@ -37,32 +64,55 @@ public class Window extends JFrame{
 		this.setLocation(xPos, yPos);
 		
 		// add panels
-		setLayout(new GridLayout(1,2));
+		this.setLayout(new GridLayout(1,2));
 		mainPanel = new JPanel();
 		buttonPanel = new JPanel();
 		
 		// set components: mainPanel
-		mainPanel.setPreferredSize(new Dimension(400, 400));
-		mainPanel.setLayout(new GridLayout(1,2));
+		//mainPanel.setPreferredSize(new Dimension(400, 400));
+		//mainPanel.setLayout(new GridLayout(1,1));
+		
+		// ----------TEMP--------------------------------
+		
+		model = new DefaultTableModel(data, columnNames);
+		carList = new JTable(model) {
+			private static final long serialVersionUID = 1L;
+
+			public Class<? extends Object> getColumnClass(int column) {
+				return getValueAt(0, column).getClass();
+			}
+		};
+		
+		carList.setPreferredScrollableViewportSize(carList.getPreferredSize());
+		carList.setFillsViewportHeight(true);
+		carList.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		
+		scrollPane = new JScrollPane(carList);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		mainPanel.add(scrollPane);
+		
+		//----------END----------------------------------
+		
+		mainBorder = BorderFactory.createTitledBorder("List Of Cars");
 		
 		listOfCars = new JTextArea(15,20);
-		
-		listOfCars.setText("List of Cars:\n");
 		listOfCars.setLineWrap(true);
 		listOfCars.setWrapStyleWord(true);
 		
-		mainPanel.add(listOfCars);
+		mainPanel.setBorder(mainBorder);
+		//mainPanel.add(listOfCars);
 		
 		// set components: buttonPanel
 		buttonPanel.setPreferredSize(new Dimension(700, 400));
-		buttonPanel.setLayout(new GridLayout(4,1));
+		buttonPanel.setLayout(new GridLayout(3,1));
 		
-		title = new JLabel("Button menu");
+		buttonBorder = BorderFactory.createTitledBorder("Main menu:");
+		
 		addNewCar = new JButton("Add new car");
 		deleteCar = new JButton("Delete car");
 		editCar = new JButton("Edit car");
 		
-		buttonPanel.add(title);
+		buttonPanel.setBorder(buttonBorder);
 		buttonPanel.add(addNewCar);
 		buttonPanel.add(deleteCar);
 		buttonPanel.add(editCar);
@@ -91,7 +141,7 @@ public class Window extends JFrame{
 	
 	public void updateMainPanel(CarBase cars) {
 		for(int i=0; i<cars.getNumbOfCars(); i++) {
-			listOfCars.append(cars.getCar(i).getName() + "  " + cars.getCar(i).getTopSpeed() + "\n");
+			listOfCars.append(cars.getCar(i).getName() + " | " + cars.getCar(i).getTopSpeed() + " | "  + cars.getCar(i).getYear() + " | " + cars.getCar(i).getFuelConsumption() + "\n");
 		}
 	}
 	
