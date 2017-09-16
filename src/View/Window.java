@@ -22,29 +22,12 @@ public class Window extends JFrame{
 	
 	// attributes: panels: mainPanel
 	private Border mainBorder;
-	private JTextArea listOfCars;
 	private DefaultTableModel model;
 	private JTable carList;
 	private JScrollPane scrollPane;
-	//private String[] columnNames = {"Name", "Top Speed", "Year of Production", "Fuel Consumption"}; 
+	private String[] columnNames = {"ID", "Name", "Top Speed", "Year of Production", "Fuel Consumption"}; 
 	
-	String[] columnNames = {"First Name",
-            "Last Name",
-            "Sport",
-            "# of Years",
-            "Vegetarian"};
-	Object[][] data = {
-		    {"Kathy", "Smith",
-		     "Snowboarding", new Integer(5), new Boolean(false)},
-		    {"John", "Doe",
-		     "Rowing", new Integer(3), new Boolean(true)},
-		    {"Sue", "Black",
-		     "Knitting", new Integer(2), new Boolean(false)},
-		    {"Jane", "White",
-		     "Speed reading", new Integer(20), new Boolean(true)},
-		    {"Joe", "Brown",
-		     "Pool", new Integer(10), new Boolean(false)}
-		};
+	Object[][] data;
 	
 	// attributes: panels: buttonPanel
 	private Border buttonBorder;
@@ -54,7 +37,7 @@ public class Window extends JFrame{
 	
 	// constructor
 	public Window() {
-		this.setSize(800,400);
+		this.setSize(850,400);
 		
 		// get dimensions of the screen 
 		Toolkit tk = Toolkit.getDefaultToolkit();
@@ -69,10 +52,10 @@ public class Window extends JFrame{
 		buttonPanel = new JPanel();
 		
 		// set components: mainPanel
-		//mainPanel.setPreferredSize(new Dimension(400, 400));
-		//mainPanel.setLayout(new GridLayout(1,1));
+		mainPanel.setPreferredSize(new Dimension(450, 400));
+		mainPanel.setLayout(new GridLayout(1,1));
 		
-		// ----------TEMP--------------------------------
+			// JTable settings BEGIN -----
 		
 		model = new DefaultTableModel(data, columnNames);
 		carList = new JTable(model) {
@@ -91,16 +74,16 @@ public class Window extends JFrame{
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		mainPanel.add(scrollPane);
 		
-		//----------END----------------------------------
+		carList.getColumnModel().getColumn(0).setPreferredWidth(30);
+		carList.getColumnModel().getColumn(1).setPreferredWidth(75);
+		carList.getColumnModel().getColumn(2).setPreferredWidth(70);
+		carList.getColumnModel().getColumn(3).setPreferredWidth(110);
+		carList.getColumnModel().getColumn(4).setPreferredWidth(110);
+		
+			// JTable settings END -----
 		
 		mainBorder = BorderFactory.createTitledBorder("List Of Cars");
-		
-		listOfCars = new JTextArea(15,20);
-		listOfCars.setLineWrap(true);
-		listOfCars.setWrapStyleWord(true);
-		
 		mainPanel.setBorder(mainBorder);
-		//mainPanel.add(listOfCars);
 		
 		// set components: buttonPanel
 		buttonPanel.setPreferredSize(new Dimension(700, 400));
@@ -140,8 +123,11 @@ public class Window extends JFrame{
 	}
 	
 	public void updateMainPanel(CarBase cars) {
+		for(int i=model.getRowCount()-1; i>=0; i--) {
+			model.removeRow(i);
+		}
 		for(int i=0; i<cars.getNumbOfCars(); i++) {
-			listOfCars.append(cars.getCar(i).getName() + " | " + cars.getCar(i).getTopSpeed() + " | "  + cars.getCar(i).getYear() + " | " + cars.getCar(i).getFuelConsumption() + "\n");
+			model.addRow(new Object[] {i, cars.getCar(i).getName(), cars.getCar(i).getTopSpeed(), cars.getCar(i).getYear(), cars.getCar(i).getFuelConsumption()});
 		}
 	}
 	
