@@ -18,7 +18,9 @@ public class Window extends JFrame{
 	
 	// attributes: panels
 	private JPanel mainPanel;
+	private JPanel menuPanel;
 	private JPanel buttonPanel;
+	private JPanel settingsPanel;
 	
 	// attributes: panels: mainPanel
 	private Border mainBorder;
@@ -35,6 +37,11 @@ public class Window extends JFrame{
 	private JButton deleteCar;
 	private JButton editCar;
 	
+	// attributes: panels: settingsPanel
+	private Border settingsBorder;
+	private JButton saveData;
+	private JButton loadData;
+	
 	// constructor
 	public Window() {
 		this.setSize(850,400);
@@ -49,13 +56,15 @@ public class Window extends JFrame{
 		// add panels
 		this.setLayout(new GridLayout(1,2));
 		mainPanel = new JPanel();
+		menuPanel = new JPanel();
 		buttonPanel = new JPanel();
+		settingsPanel = new JPanel();
 		
 		// set components: mainPanel
 		mainPanel.setPreferredSize(new Dimension(450, 400));
 		mainPanel.setLayout(new GridLayout(1,1));
 		
-			// JTable settings BEGIN -----
+			// ----- JTable settings BEGIN
 		
 		model = new DefaultTableModel(data, columnNames);
 		carList = new JTable(model) {
@@ -80,15 +89,17 @@ public class Window extends JFrame{
 		carList.getColumnModel().getColumn(3).setPreferredWidth(110);
 		carList.getColumnModel().getColumn(4).setPreferredWidth(110);
 		
-			// JTable settings END -----
+			// ----- JTable settings END
 		
 		mainBorder = BorderFactory.createTitledBorder("List Of Cars");
 		mainPanel.setBorder(mainBorder);
 		
-		// set components: buttonPanel
-		buttonPanel.setPreferredSize(new Dimension(700, 400));
-		buttonPanel.setLayout(new GridLayout(3,1));
+		// set components: menuPanel
+		menuPanel.setPreferredSize(new Dimension(700, 400));
+		menuPanel.setLayout(new GridLayout(2,1));
 		
+		// ----- set components: buttonPanel BEGIN
+		buttonPanel.setLayout(new GridLayout(3,1));
 		buttonBorder = BorderFactory.createTitledBorder("Main menu:");
 		
 		addNewCar = new JButton("Add new car");
@@ -99,10 +110,25 @@ public class Window extends JFrame{
 		buttonPanel.add(addNewCar);
 		buttonPanel.add(deleteCar);
 		buttonPanel.add(editCar);
+		menuPanel.add(buttonPanel);
+		// ----- set components: buttonPanel END
+		
+		// ----- set components: settingsPanel BEGIN
+		settingsPanel.setLayout(new GridLayout(3,1));
+		settingsBorder = BorderFactory.createTitledBorder("Main settings");
+		
+		loadData = new JButton("Load Data");
+		saveData = new JButton("Save Data");
+		
+		settingsPanel.add(saveData);
+		settingsPanel.add(loadData);
+		settingsPanel.setBorder(settingsBorder);
+		menuPanel.add(settingsPanel);
+		// ----- set components: settingsPanel END
 		
 		// set the window
 		this.add(mainPanel);
-		this.add(buttonPanel);
+		this.add(menuPanel);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("CarManager");
@@ -122,6 +148,14 @@ public class Window extends JFrame{
 		editCar.addActionListener(listenerForECBButton);
 	}
 	
+	public void addSDListener(ActionListener listenerForSDButton) {
+		saveData.addActionListener(listenerForSDButton);
+	}
+	
+	public void addLDListener(ActionListener listenerForLDButton) {
+		saveData.addActionListener(listenerForLDButton);
+	}
+	
 	public void updateMainPanel(CarBase cars) {
 		for(int i=model.getRowCount()-1; i>=0; i--) {
 			model.removeRow(i);
@@ -129,6 +163,14 @@ public class Window extends JFrame{
 		for(int i=0; i<cars.getNumbOfCars(); i++) {
 			model.addRow(new Object[] {i, cars.getCar(i).getName(), cars.getCar(i).getTopSpeed(), cars.getCar(i).getYear(), cars.getCar(i).getFuelConsumption()});
 		}
+	}
+	
+	public int getSelectedCarID() {
+		return carList.getSelectedRow();
+	}
+	
+	public void displayErrorMessage(String errorMessage) {
+		JOptionPane.showMessageDialog(this, errorMessage);
 	}
 	
 }

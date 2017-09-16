@@ -25,6 +25,8 @@ public class WindowController {
 		theView.addANCListener(new ANCButtonListener());
 		theView.addDCListener(new DCButtonListener());
 		theView.addECListener(new ECButtonListener());
+		theView.addSDListener(new SDButtonListener());
+		theView.addLDListener(new LDButtonListener());
 		
 		theView.setVisible(true);
 		
@@ -46,8 +48,13 @@ public class WindowController {
 	class DCButtonListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("DC Button Clicked");
-			
+			if(theView.getSelectedCarID()!=-1) {
+				theModel.removeCar(theView.getSelectedCarID());
+				theView.updateMainPanel(theModel);
+			}
+			else {
+				theView.displayErrorMessage("You have to select the Car!");
+			}
 		}
 		
 	}
@@ -56,8 +63,31 @@ public class WindowController {
 	class ECButtonListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("ANC Button Clicked");
+			if(theView.getSelectedCarID()!=-1) {
+				System.out.println("Editing tools");
+			}
+			else {
+				theView.displayErrorMessage("You have to select the Car!");
+			}
 			
+		}
+		
+	}
+	
+	// SD CLASS
+	class SDButtonListener implements ActionListener{
+		
+		public void actionPerformed(ActionEvent arg0) {
+			// bleh
+		}
+		
+	}
+	
+	// LD CLASS
+	class LDButtonListener implements ActionListener{
+		
+		public void actionPerformed(ActionEvent arg0) {
+			// bleh
 		}
 		
 	}

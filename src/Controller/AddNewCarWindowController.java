@@ -58,8 +58,8 @@ public class AddNewCarWindowController {
 	class cancelButtonListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Cancel button clicked!");
-			theWindow.updateMainPanel(theModel);
+			theView.cleanFields();
+			theView.setVisible(false);
 		}
 		
 	}

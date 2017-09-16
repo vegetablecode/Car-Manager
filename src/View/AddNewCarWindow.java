@@ -23,14 +23,14 @@ public class AddNewCarWindow extends JFrame{
 	public AddNewCarWindow() {
 		this.setSize(400,250);
 		
-		// gets dimensions of the screen 
+		// get dimensions of the screen 
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dimension = tk.getScreenSize();
 		int xPos = (dimension.width/2) - (this.getWidth()/2);
 		int yPos = (dimension.height/2) - (this.getHeight()/2);
 		this.setLocation(xPos+50, yPos+50);
 		
-		// adds panels
+		// add panels
 		panel = new JPanel();
 		name = new JTextField();
 		topSpeed = new JTextField();
