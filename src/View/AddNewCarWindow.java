@@ -30,7 +30,7 @@ public class AddNewCarWindow extends JFrame{
 		int yPos = (dimension.height/2) - (this.getHeight()/2);
 		this.setLocation(xPos+50, yPos+50);
 		
-		// add panels
+		// add panels and components
 		panel = new JPanel();
 		name = new JTextField();
 		topSpeed = new JTextField();

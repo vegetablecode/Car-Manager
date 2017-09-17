@@ -153,7 +153,7 @@ public class Window extends JFrame{
 	}
 	
 	public void addLDListener(ActionListener listenerForLDButton) {
-		saveData.addActionListener(listenerForLDButton);
+		loadData.addActionListener(listenerForLDButton);
 	}
 	
 	public void updateMainPanel(CarBase cars) {

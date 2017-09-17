@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import Model.CarBase;
 import View.AddNewCarWindow;
 import View.Window;
+import View.LoadDataWindow;
 
 public class WindowController {
 	
@@ -16,6 +17,10 @@ public class WindowController {
 	// anc
 	private AddNewCarWindow ancWindow;
 	private AddNewCarWindowController ancController;
+	
+	// load and save data
+	private LoadDataWindow ldWindow;
+	private LoadDataController ldController;
 	
 	// constructor
 	public WindowController(CarBase theModel, Window theView) {
@@ -33,6 +38,10 @@ public class WindowController {
 		// anc
 		ancWindow = new AddNewCarWindow();
 		ancController = new AddNewCarWindowController(theView, ancWindow, theModel);
+		
+		// load and save data
+		ldWindow = new LoadDataWindow();
+		ldController = new LoadDataController(theView, theModel, ldWindow);
 	}
 	
 	// ANC CLASS
@@ -78,7 +87,7 @@ public class WindowController {
 	class SDButtonListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent arg0) {
-			// bleh
+			System.out.println("SD");
 		}
 		
 	}
@@ -87,7 +96,8 @@ public class WindowController {
 	class LDButtonListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent arg0) {
-			// bleh
+			//ldWindow.setVisible(true);
+			ldWindow.setVisible(true);
 		}
 		
 	}
