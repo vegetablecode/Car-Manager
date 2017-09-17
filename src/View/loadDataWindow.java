@@ -6,10 +6,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
+//import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.filechooser.FileNameExtensionFilter;
+//import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class LoadDataWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -18,8 +18,9 @@ public class LoadDataWindow extends JFrame{
 	private JPanel panel;
 	private JButton loadFromDefaultDB;
 	private JButton loadFromSelectedDB;
+	/*
 	private JFileChooser chooseFile;
-	private FileNameExtensionFilter filter;
+	private FileNameExtensionFilter filter; */
 	
 	// constructor
 	public LoadDataWindow() {
@@ -36,6 +37,8 @@ public class LoadDataWindow extends JFrame{
 		panel = new JPanel();
 		loadFromDefaultDB = new JButton("Load From Default DataBase");
 		loadFromSelectedDB = new JButton("Load From Selected DataBase");
+		
+		/*
 		chooseFile = new JFileChooser();
 		filter = new FileNameExtensionFilter("Text DB Files (*.txt)", "txt");
 		
@@ -50,10 +53,9 @@ public class LoadDataWindow extends JFrame{
 	       System.out.println("You chose to open this file: " +
 	            chooseFile.getSelectedFile().getName());
 	    }
-		
+		*/
 		
 		panel.setLayout(new GridLayout(2,1));
-		//panel.add(chooseFile);
 		panel.add(loadFromSelectedDB);
 		panel.add(loadFromDefaultDB);
 		
