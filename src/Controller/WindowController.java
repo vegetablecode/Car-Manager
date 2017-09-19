@@ -7,6 +7,7 @@ import Model.CarBase;
 import View.AddNewCarWindow;
 import View.Window;
 import View.LoadDataWindow;
+import View.SaveDataWindow;
 
 public class WindowController {
 	
@@ -21,6 +22,8 @@ public class WindowController {
 	// load and save data
 	private LoadDataWindow ldWindow;
 	private LoadDataController ldController;
+	private SaveDataWindow sdWindow;
+	private SaveDataController sdController;
 	
 	// constructor
 	public WindowController(CarBase theModel, Window theView) {
@@ -42,6 +45,8 @@ public class WindowController {
 		// load and save data
 		ldWindow = new LoadDataWindow();
 		ldController = new LoadDataController(theView, theModel, ldWindow);
+		sdWindow = new SaveDataWindow();
+		sdController = new SaveDataController(theView, theModel, sdWindow);
 	}
 	
 	// ANC CLASS
@@ -87,7 +92,7 @@ public class WindowController {
 	class SDButtonListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("SD");
+			sdWindow.setVisible(true);
 		}
 		
 	}

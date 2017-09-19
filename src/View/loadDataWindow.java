@@ -18,9 +18,6 @@ public class LoadDataWindow extends JFrame{
 	private JPanel panel;
 	private JButton loadFromDefaultDB;
 	private JButton loadFromSelectedDB;
-	/*
-	private JFileChooser chooseFile;
-	private FileNameExtensionFilter filter; */
 	
 	// constructor
 	public LoadDataWindow() {
@@ -37,23 +34,6 @@ public class LoadDataWindow extends JFrame{
 		panel = new JPanel();
 		loadFromDefaultDB = new JButton("Load From Default DataBase");
 		loadFromSelectedDB = new JButton("Load From Selected DataBase");
-		
-		/*
-		chooseFile = new JFileChooser();
-		filter = new FileNameExtensionFilter("Text DB Files (*.txt)", "txt");
-		
-		chooseFile.setFileFilter(filter);
-		chooseFile.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-		chooseFile.setCurrentDirectory(new java.io.File("./database"));
-		chooseFile.setAcceptAllFileFilterUsed(false);
-		chooseFile.setDialogTitle("Pick the DataBase");
-		
-		int returnVal = chooseFile.showOpenDialog(null);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) {
-	       System.out.println("You chose to open this file: " +
-	            chooseFile.getSelectedFile().getName());
-	    }
-		*/
 		
 		panel.setLayout(new GridLayout(2,1));
 		panel.add(loadFromSelectedDB);
