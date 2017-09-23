@@ -56,8 +56,8 @@ public class SaveDataController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("DEF");
-			
+			String nameOfFile = "./database/default.txt";
+			fileSaver.saveToFile(nameOfFile);
 		}
 		
 	}
