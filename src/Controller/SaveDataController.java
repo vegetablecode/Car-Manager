@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Model.CarBase;
+import Utils.FileSaver;
 import View.SaveDataWindow;
 import View.Window;
 
@@ -13,12 +14,15 @@ public class SaveDataController {
 	private Window theWindow;
 	private CarBase model;
 	private SaveDataWindow theView;
+	private FileSaver fileSaver;
 	
 	// constructor
 	public SaveDataController(Window theWindow, CarBase model, SaveDataWindow theView) {
 		this.theWindow = theWindow;
 		this.model = model;
 		this.theView = theView;
+		
+		fileSaver = new FileSaver(model);
 			
 		theView.addSTDListener(new SaveToDDBListener());
 		theView.addSTSListener(new SaveToSDBListener());
@@ -34,10 +38,11 @@ public class SaveDataController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String nameOfFile = theView.getNameOfFile();
+			String nameOfFile = "./database/";
+			nameOfFile += theView.getNameOfFile();
 			if(nameOfFile.isEmpty()!=true) {
 				nameOfFile += ".txt";
-				// next
+				fileSaver.saveToFile(nameOfFile);
 			} else {
 				System.out.println("No line typed!");
 				theView.displayErrorMessage("Please type the name of file!");
