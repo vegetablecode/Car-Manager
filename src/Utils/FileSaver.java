@@ -26,9 +26,9 @@ public class FileSaver {
 		
 		for(int i = 0; i<theModel.getNumbOfCars(); i++) {
 			writeToFile(theModel.getCar(i), carOutput);
+		}
 		
 		carOutput.close();
-		}
 	}
 	
 	private PrintWriter createFile(String fileName) {
@@ -45,7 +45,8 @@ public class FileSaver {
 	}
 	
 	private void writeToFile(Car car, PrintWriter carOutput) {
-		String carInfo = car.getName() + ";" + Integer.toString(car.getTopSpeed()) + ";" + Integer.toString(car.getYear()) + ";" + Double.toString(car.getFuelConsumption());
+		String carInfo = "\"" + car.getName() + "\",\"" + Integer.toString(car.getTopSpeed()) + "\",\"" + Integer.toString(car.getYear()) + "\",\"" + Double.toString(car.getFuelConsumption());
+		carInfo += "\"";
 		carOutput.println(carInfo);
 	}
 

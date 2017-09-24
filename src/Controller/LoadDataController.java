@@ -38,7 +38,7 @@ public class LoadDataController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser chooseFile = new JFileChooser();
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("Text DB Files (*.txt)", "txt");
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Text DB Files (*.csv)", "csv");
 			
 			chooseFile.setFileFilter(filter);
 			chooseFile.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -48,16 +48,11 @@ public class LoadDataController {
 			
 			int returnVal = chooseFile.showOpenDialog(null);
 		    if(returnVal == JFileChooser.APPROVE_OPTION) {
-		       try {
-		    	   String nameOfFile = "./database/";
-		    	   nameOfFile += chooseFile.getSelectedFile().getName();
-		    	   fileOpener.readFile(nameOfFile);
-			} catch (IOException e1) {
-				System.out.println("Can't find the file! :(");
-				e1.printStackTrace();
-			}
+		    		String nameOfFile = "./database/";
+		    	    nameOfFile += chooseFile.getSelectedFile().getName();
+		    	    fileOpener.loadDatabase(nameOfFile);
 		    }
-			
+			theWindow.updateMainPanel(model);
 		}
 		
 	}

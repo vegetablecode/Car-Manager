@@ -38,7 +38,7 @@ public class SaveDataWindow extends JFrame{
 		saveToDefaultDB = new JButton("Save to Default DataBase");
 		saveToSelectedDB = new JButton("Save to Selected DataBase");
 		nameOfFile = new JTextField();
-		label = new JLabel("Enter the name of DB:");
+		label = new JLabel("Name of file (without an extension):");
 		
 		
 		panel.setLayout(new GridLayout(4,1));

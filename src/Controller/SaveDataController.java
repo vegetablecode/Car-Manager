@@ -41,7 +41,7 @@ public class SaveDataController {
 			String nameOfFile = "./database/";
 			nameOfFile += theView.getNameOfFile();
 			if(nameOfFile.isEmpty()!=true) {
-				nameOfFile += ".txt";
+				nameOfFile += ".csv";
 				fileSaver.saveToFile(nameOfFile);
 			} else {
 				System.out.println("No line typed!");
