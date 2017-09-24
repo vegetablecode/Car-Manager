@@ -45,9 +45,13 @@ public class Window extends JFrame{
 	private JButton saveData;
 	private JButton loadData;
 	
+	// attributes: panels: filters panel
+	private JPanel filtersPanel;
+	private Border filtersBorder;
+	
 	// constructor
 	public Window() {
-		this.setSize(800,400);
+		this.setSize(800,500);
 		
 		// get dimensions of the screen 
 		Toolkit tk = Toolkit.getDefaultToolkit();
@@ -65,9 +69,10 @@ public class Window extends JFrame{
 		userPanel = new JPanel();
 		uPTop = new JPanel();
 		uPBottom = new JPanel();
+		filtersPanel = new JPanel();
 		
 		// set components: mainPanel
-		mainPanel.setPreferredSize(new Dimension(500, 370));
+		mainPanel.setPreferredSize(new Dimension(500, 420));
 		mainPanel.setLayout(new GridLayout(1,1));
 		
 			// ----- JTable settings BEGIN
@@ -126,13 +131,20 @@ public class Window extends JFrame{
 		settingsPanel.setBorder(settingsBorder);
 		// ----- set components: settingsPanel END
 		
+		// set components: filterPanel
+		filtersPanel.setPreferredSize(new Dimension(260,320));
+		filtersBorder = BorderFactory.createTitledBorder("Filters:");
+		filtersPanel.setBorder(filtersBorder);
+		
 		// set components: userPanel
 		
 		uPTop.add(buttonPanel);
 		uPTop.add(settingsPanel);
+		uPBottom.add(filtersPanel);
 		
-		userPanel.setLayout(new GridLayout(2,1));
-		//userPanel.setPreferredSize(new Dimension(100, 400));
+		//userPanel.setLayout(new GridLayout(2,1));
+		userPanel.setPreferredSize(new Dimension(260,500));
+		userPanel.setLayout(new FlowLayout());
 		userPanel.add(uPTop);
 		userPanel.add(uPBottom);
 		
