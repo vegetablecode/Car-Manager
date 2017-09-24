@@ -2,6 +2,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
@@ -18,33 +19,35 @@ public class Window extends JFrame{
 	
 	// attributes: panels
 	private JPanel mainPanel;
-	private JPanel menuPanel;
 	private JPanel buttonPanel;
 	private JPanel settingsPanel;
 	
-	// attributes: panels: mainPanel
+	// attributes: panels: mainPanel <- LEFT HALF
 	private Border mainBorder;
 	private DefaultTableModel model;
 	private JTable carList;
 	private JScrollPane scrollPane;
 	private String[] columnNames = {"ID", "Name", "Top Speed", "Year of Production", "Fuel Consumption"}; 
-	
 	Object[][] data;
 	
-	// attributes: panels: buttonPanel
+	// attributes: panels: userPanel <- RIGHT HALF
+	private JPanel userPanel;
+	private JPanel uPTop, uPBottom;
+	
+	// attributes: panels: buttonPanel <- MAIN SETTINGS
 	private Border buttonBorder;
 	private JButton addNewCar;
 	private JButton deleteCar;
 	private JButton editCar;
 	
-	// attributes: panels: settingsPanel
+	// attributes: panels: settingsPanel <- MAIN MENU
 	private Border settingsBorder;
 	private JButton saveData;
 	private JButton loadData;
 	
 	// constructor
 	public Window() {
-		this.setSize(850,400);
+		this.setSize(800,400);
 		
 		// get dimensions of the screen 
 		Toolkit tk = Toolkit.getDefaultToolkit();
@@ -54,14 +57,17 @@ public class Window extends JFrame{
 		this.setLocation(xPos, yPos);
 		
 		// add panels
-		this.setLayout(new GridLayout(1,2));
+		//this.setLayout(new GridLayout(1,2));
+		this.setLayout(new FlowLayout());
 		mainPanel = new JPanel();
-		menuPanel = new JPanel();
 		buttonPanel = new JPanel();
 		settingsPanel = new JPanel();
+		userPanel = new JPanel();
+		uPTop = new JPanel();
+		uPBottom = new JPanel();
 		
 		// set components: mainPanel
-		mainPanel.setPreferredSize(new Dimension(450, 400));
+		mainPanel.setPreferredSize(new Dimension(500, 370));
 		mainPanel.setLayout(new GridLayout(1,1));
 		
 			// ----- JTable settings BEGIN
@@ -84,8 +90,8 @@ public class Window extends JFrame{
 		mainPanel.add(scrollPane);
 		
 		carList.getColumnModel().getColumn(0).setPreferredWidth(30);
-		carList.getColumnModel().getColumn(1).setPreferredWidth(75);
-		carList.getColumnModel().getColumn(2).setPreferredWidth(70);
+		carList.getColumnModel().getColumn(1).setPreferredWidth(110);
+		carList.getColumnModel().getColumn(2).setPreferredWidth(100);
 		carList.getColumnModel().getColumn(3).setPreferredWidth(110);
 		carList.getColumnModel().getColumn(4).setPreferredWidth(110);
 		
@@ -93,10 +99,6 @@ public class Window extends JFrame{
 		
 		mainBorder = BorderFactory.createTitledBorder("List Of Cars");
 		mainPanel.setBorder(mainBorder);
-		
-		// set components: menuPanel
-		menuPanel.setPreferredSize(new Dimension(700, 400));
-		menuPanel.setLayout(new GridLayout(2,1));
 		
 		// ----- set components: buttonPanel BEGIN
 		buttonPanel.setLayout(new GridLayout(3,1));
@@ -110,7 +112,6 @@ public class Window extends JFrame{
 		buttonPanel.add(addNewCar);
 		buttonPanel.add(deleteCar);
 		buttonPanel.add(editCar);
-		menuPanel.add(buttonPanel);
 		// ----- set components: buttonPanel END
 		
 		// ----- set components: settingsPanel BEGIN
@@ -123,12 +124,21 @@ public class Window extends JFrame{
 		settingsPanel.add(saveData);
 		settingsPanel.add(loadData);
 		settingsPanel.setBorder(settingsBorder);
-		menuPanel.add(settingsPanel);
 		// ----- set components: settingsPanel END
+		
+		// set components: userPanel
+		
+		uPTop.add(buttonPanel);
+		uPTop.add(settingsPanel);
+		
+		userPanel.setLayout(new GridLayout(2,1));
+		//userPanel.setPreferredSize(new Dimension(100, 400));
+		userPanel.add(uPTop);
+		userPanel.add(uPBottom);
 		
 		// set the window
 		this.add(mainPanel);
-		this.add(menuPanel);
+		this.add(userPanel);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("CarManager");
